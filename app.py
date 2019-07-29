@@ -47,15 +47,15 @@ def percentage_func():
  #TODO: Change "sel" to select all
 
     sel = [
-        usa_table.state,
-        usa_table.abr,
-        usa_table.lat,
-        usa_table.lng,
-        usa_table.incidence,
-        usa_table.population,
-        usa_table.percentage_incidence,
-        usa_table.death_count,
-        usa_table.percentage_deaths
+        States_percentage.state,
+        States_percentage.abr,
+        States_percentage.lat,
+        States_percentage.lng,
+        States_percentage.incidence,
+        States_percentage.population,
+        States_percentage.percentage_incident,
+        States_percentage.death_count,
+        States_percentage.percentage_deaths
     ]
 
     # Query the records
