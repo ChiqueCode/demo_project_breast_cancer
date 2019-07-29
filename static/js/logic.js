@@ -36,7 +36,7 @@ d3.json(url, { crossOrigin: "anonymous" }).then(function(response) {
   console.log(response);
 
   function markerSize(incidents) {
-    return incidents * 800000;
+    return incidents * 90000;
   }
 
   // Loop through the cities array and create one marker for each city object
@@ -61,7 +61,7 @@ d3.json(url, { crossOrigin: "anonymous" }).then(function(response) {
       //   fillColor: getColor(response[i].percentage_deaths),
       // Setting our circle's radius equal to the output of our markerSize function
       // This will make our marker's size proportionate to its population
-      radius: markerSize(response[i].percentage_incident)
+      radius: markerSize(response[i].percentage_incidence)
     })
       .bindPopup(
         "<h1>" +
