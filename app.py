@@ -25,7 +25,8 @@ from sqlalchemy.sql import func
 app = Flask(__name__)
 
 # Database Setup
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/breast_cancer.sqlite"
 db = SQLAlchemy(app)
 
 # Reflect an existing database and tables
@@ -45,7 +46,7 @@ def percentage_func():
     # return jsonify(list(df))
 
  #TODO: Change "sel" to select all
-
+ 
     sel = [
         States_percentage.state,
         States_percentage.abr,
@@ -60,6 +61,7 @@ def percentage_func():
 
     # Query the records
     percentage_results = db.session.query(*sel).all()
+    # percentage_results = db.session.query.all()
 
     # Creating Pandas DataFrame
     percentage_df = pd.DataFrame(percentage_results, columns=["state", "abr", "lat", "lng", "incidence", "population", "percentage_incidence", "death_count", "percentage_deaths"])
