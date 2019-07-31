@@ -25,8 +25,8 @@ from sqlalchemy.sql import func
 app = Flask(__name__)
 
 # Database Setup
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/breast_cancer.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/breast_cancer.sqlite"
 db = SQLAlchemy(app)
 
 # Reflect an existing database and tables
