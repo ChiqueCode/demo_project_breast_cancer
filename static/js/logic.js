@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
   center: [37.09, -95.71],
-  zoom: 5
+  zoom: 4.5
 });
 
 // Add a tile layer
@@ -82,14 +82,14 @@ var legend = L.control({ position: "bottomright" });
 legend.onAdd = function() {
   var div = L.DomUtil.create("div", "info legend");
 //   var limits = ["0.017-0.021", "0.021-0.024", "0.024-0.027", "0.027+"];
-  var limits = ["0.021%", "0.024%", "0.027", "0.027+"]
+  var limits = ["0.021%", "0.024%", "0.027", "0.027%+"]
   var colors = ["#efa9ee", "#ef64f0", "#8e138f", "#55055b"];
   var labels = [];
 
   // console.log(labels);
 
   var legendInfo =
-    "<h1>Deaths %</h1>" +
+    "<h5>Deaths %</h5>" +
     '<div class="labels">' +
     '<div class="min">' +
     limits[0] +
