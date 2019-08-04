@@ -183,7 +183,7 @@ def analyze(patientID):
 
     # Load features, model, and scaler 
     X = load_breast_cancer().data
-    model = load("cancer_model.joblib")
+    model = load("rf_model.joblib")
     scaler = load("scaler.out")
 
     # Get features for selected row and scale
