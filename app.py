@@ -25,6 +25,7 @@ from sqlalchemy.sql import func
 app = Flask(__name__)
 
 # Database Setup
+# TODO: Make db folder for sqlite database
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/breast_cancer.sqlite"
 db = SQLAlchemy(app)
@@ -35,6 +36,7 @@ Base.prepare(db.engine, reflect=True)
 
 # Rename tables for reference
 States_percentage = Base.classes.states_percentage_table
+Trend = Base.classes.trend_table
 # world_new_table = Base.classes.world_cases_new
 # world_mortality_table = Base.classes.world_mortality
 
@@ -68,6 +70,25 @@ def percentage_func():
 
     # Return results in JSON format
     return jsonify(percentage_df.to_dict(orient="records"))
+
+@app.route("/trend")
+def trend_func():
+ 
+    sel = [
+        Trend.year,
+        Trend.incidents,
+        Trend.deaths,
+    ]
+
+    # Query the records
+    trend_results = db.session.query(*sel).all()
+    # percentage_results = db.session.query.all()
+
+    # Creating Pandas DataFrame
+    trend_df = pd.DataFrame(trend_results, columns=["year", "incidents", "deaths"])
+
+    # Return results in JSON format
+    return jsonify(trend_df.to_dict(orient="records"))
 
 
 # @app.route("/world/new")

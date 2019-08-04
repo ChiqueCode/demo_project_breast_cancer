@@ -33,7 +33,7 @@ L.tileLayer(
 var url = "/percentage";
 
 d3.json(url, { crossOrigin: "anonymous" }).then(function(response) {
-  console.log(response);
+  // console.log(response);
 
   function markerSize(incidents) {
     return incidents * 90000;
