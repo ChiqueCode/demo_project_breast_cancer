@@ -36,7 +36,7 @@ Base.prepare(db.engine, reflect=True)
 
 # Rename tables for reference
 States_percentage = Base.classes.states_percentage_table
-Trend = Base.classes.trend_table
+Trend = Base.classes.cancer_trend_table
 # world_new_table = Base.classes.world_cases_new
 # world_mortality_table = Base.classes.world_mortality
 
