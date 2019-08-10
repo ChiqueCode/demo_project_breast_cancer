@@ -22,13 +22,10 @@ var chartGroup = svg
 // d3.csv("../db/usa_rates.csv", function(dataCancer, error) {
 //   if (error) throw error;
 
-d3.csv('../db/usa_rates.csv')
-  .then(function(dataCancer) {
-      // data is now whole data set
-      // draw chart in here!
+var url = '/trend';
 
+d3.json(url, { crossOrigin: "anonymous" }).then(function(dataCancer) {
   console.log(dataCancer);
-  // console.log([dataCancer]);
 
   // Create a function to parse date and time
   var parseTime = d3.timeParse("%Y");
@@ -123,9 +120,4 @@ d3.csv('../db/usa_rates.csv')
     .attr("transform", `translate(${width / 2}, ${height + margin.top + 40})`)
     .classed("deaths-text text", true)
     .text("Deaths Rate due to Breast Cancer in USA");
-
-  })
-  .catch(function(error){
-     // handle error   
-  });  
-// });
+});
