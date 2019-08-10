@@ -17,7 +17,7 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
@@ -90,26 +90,6 @@ def trend_func():
     # Return results in JSON format
     return jsonify(trend_df.to_dict(orient="records"))
 
-
-# @app.route("/world/new")
-# def world():
-#     """Returns jsonified dictionary of new cancer cases by country
-#     for 1996-2016"""
-
-
-#     #GRETEL - GET RIGHT SYNTAX TO JUST SELECT EVERYTHING
-#     # Query the records
-#     new_results = db.session.query(*sel).all()
-
-#     # TODO: GRETEL CHECK SYNTAX
-#     # Create dataframe from results
-#     world_new_df = pd.DataFrame(new_results)
-
-#     # TODO: GRETEL, SEE IF PARAMETER LIKE SONYA HAS IS APPROPRIATE
-#     # Return results in JSON format
-#     return jsonify(world_new_df.to_dict)
-
-
 # Home route
 @app.route("/")
 def index():
@@ -151,7 +131,6 @@ def cta():
 def features(patientID):
     """Returns list of features for given patient ID"""
 
-
     # Create list of feature names
     feature_names = ["Radius (worst)", "Texture (worst)", "Perimeter (worst)",\
         "Area (worst)", "Smoothness (worst)", "Compactness (worst)", \
@@ -177,7 +156,6 @@ def features(patientID):
 def analyze(patientID):
     """Submit data to calculator"""
 
-
     # Translate patient ID to row
     row = (int(patientID) - 19000)
 
@@ -199,6 +177,35 @@ def analyze(patientID):
         diagnosis = "Malignant"
 
     return jsonify(diagnosis)
+    # return render_template("calculator.html",diagnosis=diagnosis)
+
+
+# ~~~~~~~~~~~ Attempt
+
+# def ValuePredictor(to_predict_list):
+#     row = int(patientID) - 19000
+#     X = load_breast_cancer().data
+#     to_predict_list = X[row]
+#     to_predict = np.array(to_predict_list).reshape(1,32)
+#     loaded_model = load("rf_model.joblib")
+#     result = loaded_model.predict(to_predict)
+#     return result[0]
+
+# @app.route('/result', methods= ['POST'])
+# def result():
+#     if request.method == 'POST':
+#         to_predict_list = request.form.to_dict()
+#         to_predict_list=list(to_predict_list.values())
+#         to_predict_list = list(map(int, to_predict_list))
+#         result = ValuePredictor(to_predict_list)
+
+#         if int(result)==0:
+#             prediction='Benign'
+#         else:
+#             prediction='Malignant'
+            
+#         return render_template("calculator.html",prediction=prediction)
+
 
 if __name__ == "__main__":
     # TODO: Remeber to turn debugging off when going live! 

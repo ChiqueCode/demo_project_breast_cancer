@@ -23,9 +23,9 @@ function createDropdown() {
   });
 }
 
-function submitdropdownvalue(newvalue){
-    d3.select("#analyze").property("value", newvalue);
-} 
+function submitdropdownvalue(newvalue) {
+  d3.select("#analyze").property("value", newvalue);
+}
 
 function selectPatient(patientID) {
   /**
@@ -34,21 +34,32 @@ function selectPatient(patientID) {
     /* patient in feature array
     */
 
-  // Clear values for existing feature table and diagnosis
-  d3.select("tbody").html("");
-  d3.select("#diagnosis").html("");
+  // Saving the table and results as variables
+  var table = d3.select("tbody");
+  var resultDisplay = d3.select("#diagnosis");
 
-  var url = `/features/${patientID}`;
+  // Clear values for existing feature table and diagnosis
+  table.html("");
+  resultDisplay.html("&nbsp;");
+
+  var featuresURL = `/features/${patientID}`;
+  var analysisURL = `/analyze/${patientID}`;
 
   // Fetch dictionary of the name of the features and corresponding values
-  d3.json(url).then(function(patientFeatures) {
+  d3.json(featuresURL).then(function(patientFeatures) {
     // For each feature, enter the feature name and the feature value into a row
     Object.entries(patientFeatures).forEach(([key, value]) => {
-      var tableRow = d3.select("tbody").append("tr");
+      var tableRow = table.append("tr");
       tableRow.append("td").text(key);
       tableRow.append("td").text(value);
     });
   });
+
+  // Fetch results and display in #diagnosis
+  d3.json(analysisURL).then(function(results) {
+    resultDisplay.html(results);
+  });
 }
 
+// Create drop down
 createDropdown();
