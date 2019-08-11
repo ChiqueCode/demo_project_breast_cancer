@@ -25,9 +25,7 @@ from sqlalchemy.sql import func
 app = Flask(__name__)
 
 # Database Setup
-# TODO: Make db folder for sqlite database
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///breast_cancer.sqlite"
-# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/breast_cancer.sqlite"
 db = SQLAlchemy(app)
 
 # Reflect an existing database and tables
@@ -37,8 +35,7 @@ Base.prepare(db.engine, reflect=True)
 # Rename tables for reference
 States_percentage = Base.classes.states_percentage_table
 Trend = Base.classes.cancer_trend_table
-# world_new_table = Base.classes.world_cases_new
-# world_mortality_table = Base.classes.world_mortality
+Model = Base.classes.model_table
 
 # Deaths/incidents percentage by state route
 @app.route("/percentage")
@@ -63,7 +60,6 @@ def percentage_func():
 
     # Query the records
     percentage_results = db.session.query(*sel).all()
-    # percentage_results = db.session.query.all()
 
     # Creating Pandas DataFrame
     percentage_df = pd.DataFrame(percentage_results, columns=["state", "abr", "lat", "lng", "incidence", "population", "percentage_incidence", "death_count", "percentage_deaths"])
@@ -103,7 +99,7 @@ def map_func():
     app.add_url_rule('/', 'map_func', map_func)
 
 
-# Vizualisations/tableau route
+# Vizualisations route
 @app.route("/story")
 def story():
     return render_template("story.html")
@@ -126,7 +122,7 @@ def calc():
 def cta():
     return render_template("cta.html")
    
-
+# Route for wisconsin features
 @app.route("/features/<patientID>")
 def features(patientID):
     """Returns list of features for given patient ID"""
@@ -179,33 +175,56 @@ def analyze(patientID):
     return jsonify(diagnosis)
     # return render_template("calculator.html",diagnosis=diagnosis)
 
+# Route for cytology features
+@app.route("/model")
+def model():
+    """Returns list of features for given patient ID"""
 
-# ~~~~~~~~~~~ Attempt
+    # Converting data into Pandas DF in order to assign X and label
 
-# def ValuePredictor(to_predict_list):
-#     row = int(patientID) - 19000
-#     X = load_breast_cancer().data
-#     to_predict_list = X[row]
-#     to_predict = np.array(to_predict_list).reshape(1,32)
-#     loaded_model = load("rf_model.joblib")
-#     result = loaded_model.predict(to_predict)
-#     return result[0]
+    sel = [
+        Model.thickness,
+        Model.size,
+        Model.shape,
+        Model.adhesion,
+        Model.single,
+        Model.nuclei,
+        Model.chromatin,
+        Model.nucleoli,
+        Model.mitosis,
+        Model.diagnosis
+    ]
 
-# @app.route('/result', methods= ['POST'])
-# def result():
-#     if request.method == 'POST':
-#         to_predict_list = request.form.to_dict()
-#         to_predict_list=list(to_predict_list.values())
-#         to_predict_list = list(map(int, to_predict_list))
-#         result = ValuePredictor(to_predict_list)
+    # Query the records
+    model_results = db.session.query(*sel).all()
 
-#         if int(result)==0:
-#             prediction='Benign'
-#         else:
-#             prediction='Malignant'
-            
-#         return render_template("calculator.html",prediction=prediction)
+    # Creating Pandas DataFrame
+    model_df = pd.DataFrame(model_results, columns=["thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
 
+    return jsonify(model_df.to_dict(orient="records"))
+
+
+
+
+    # # Create list of feature names
+    # feature_names_model = ["Thickness", "Size", "Shape",\
+    #     "Adhesion", "Single", "Nuclei", \
+    #     "Chromatin", "Nucleoli", "Mitosis"]
+    
+    # row_model = int(patientID) - 19000
+
+    # Assign random numbers for features
+    # X = random.seed(n)
+    # X = dropped_df.drop(columns=["class"])
+    # feature_values_model = X[row_model]
+
+    # Select only features to be displayed
+    # feature_values_model = feature_values_model[20:]
+
+    # # Create dictionary of keys feature names and values
+    # features_dict_model = dict(zip(feature_names_model, feature_values_model))
+
+    # return jsonify(features_dict_model)    
 
 if __name__ == "__main__":
     # TODO: Remeber to turn debugging off when going live! 
