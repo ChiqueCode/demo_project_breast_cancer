@@ -109,10 +109,6 @@ h6 {
     color: hsla(337, 53%, 20%, 55%);
 }
 
-label {
-    font-family: "Oswald", sans-serif;
-}
-
 /* Sections */
 
 #header {
@@ -221,35 +217,11 @@ screen and (max-width: 39.9375em) {
     border-radius: 10px;
 }
 
-/* Demo */
-
-.how-container {
-    color: #3b0b58;
-    padding-top: 25px;
-    padding-bottom: 25px;
-}
-
-.demo-container th {
-    text-align: center;
-}
-
-.demo-container {
-    background-color: hsla(53, 80%, 79%, 0.45);
-}
-
-.result {
-    padding: 40px;
-    background-color: #c78d78;
-    color: #fff3f7;
-}
-
 /* Sections */
 
 .banner-container,
 .pull-container,
 .stats-container,
-.request-consultation,
-.how-container,
 .demo-container,
 .who-are-we,
 .cta-03,
@@ -265,8 +237,6 @@ screen and (max-width: 39.9375em) {
     .banner-container,
     .pull-container,
     .stats-container,
-    .request-consultation,
-    .how-container,
     .demo-container,
     .who-are-we,
     .cta-03,
@@ -274,12 +244,6 @@ screen and (max-width: 39.9375em) {
         padding-top: 100px;
         padding-bottom: 100px;
     }
-}
-
-/* Request Consultation */
-
-.request-consultation {
-    padding-top: 50px;
 }
 
 /* Statistic Section */
@@ -511,4 +475,60 @@ footer a:focus {
 
 .incidents-text {
     fill: #3b0b58;
+}
+
+/* Request Consultation */
+
+.request-consultation {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+label {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
+/* Demo Page (aka /calculator)*/
+
+.demo-container th {
+    text-align: center;
+}
+
+.demo-container {
+    background-color: hsla(53, 80%, 79%, 0.45);
+}
+
+.result {
+    padding: 40px;
+    background-color: #c78d78;
+    color: #fff3f7;
+}
+
+.how-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.how-it-works {
+    padding: 3rem;
+    background: #854777;
+    color: #fff3f7;
+    border-radius: 10px;
+}
+
+.how-it-works h2 {
+    color: #fff3f7;
+}
+
+.graphical-visual {
+    background: linear-gradient(hsla(16, 41%, 63%, 0.25), hsla(16, 41%, 63%, 0.25)),
+        url("../images/interlaced.png");
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.graphical-visual svg {
+    color: #c78d78;
+    font-size: 6rem;
 }

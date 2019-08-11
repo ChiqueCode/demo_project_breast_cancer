@@ -15,7 +15,6 @@
   <!-- Font Awesome Pro kit -->
   <script src="https://kit.fontawesome.com/8e8325140e.js"></script>
   <link rel="stylesheet" href="../static/css/style.css" />
-
 </head>
 
 <body>
@@ -62,73 +61,101 @@
   </div>
 
   <!-- How it works -->
-  <!-- 4 sections should be spread evenly (+arrows) Patient Data-> BBB-> populate data -> get result -->
+
   <div class="how-container">
     <div class="grid-container">
-      <div class="grid-x align-middle" id="banner">
-        <div class="cell large-12">
-          <h4>An integrated Platform that streamlines the Patient mammogram's results and provides the diagnosis</h4>
+      <div class="grid-x grid-margin-x grid-margin-y">
+        <div class="cell large-6 medium-6">
+          <h1>Service Demo</h1>
+          <h4 class="subheader">This is an integrated platform that streamlines the patient mammogram's results and
+            provides the diagnosis
+          </h4>
+          <p>Measurements are passed through two machine learning random forest algorithms. University of Wisconsin and
+            Cutology datasets are used.</p>
         </div>
-        <div class="cell large-2 text-center">
-          <img src="../static/images/database.png" alt="Hospital Database" style="text-align: center">
-          <h5>Connect Database</h5>
-        </div>
-        <div class="cell large-1">
-          <img src="../static/images/arrow.png" alt="Arrow" style="text-align: center">
-        </div>
-        <div class="cell large-2 text-center">
-          <img src="../static/images/patient.png" alt="Patient" style="text-align: center">
-          <h5>Select Patient</h5>
-        </div>
-        <div class="cell large-1">
-          <img src="../static/images/arrow.png" alt="Arrow" style="text-align: center">
-        </div>
-        <div class="cell large-2 text-center">
-          <img src="../static/images/app.png" alt="Analyze" style="text-align: center">
-          <h5>Analyze Data</h5>
-        </div>
-        <div class="cell large-1" style="align-content: center">
-          <img src="../static/images/arrow.png" alt="Arrow" style="text-align: center">
-        </div>
-        <div class="cell large-2 text-center">
-          <img src="../static/images/report.png" alt="result" style="text-align: center">
-          <h5>Get Results</h5>
-        </div>
-        <div class="cell large-1" style="align-content: center">
-          <img src="../static/images/check.png" alt="Check" style="text-align: center">
-        </div>
-      </div>
-
-      <div class="demo-container">
-        <div class="grid-container">
-          <div class="grid-x align-middle grid-margin-x" id="app">
-            <div class="cell large-6 text-center">
-              <h3>Select Patient ID</h3>
-              <form>
-                <select id="selPatient" onchange="selectPatient(this.value)"></select>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Measurement</th>
-                      <th>Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  </tbody>
-                </table>
-              </form>
-            </div>
-            <div class="cell large-6">
-              <div class="result text-center">
-                <h2>Diagnosis</h2>
-                <h3 id="diagnosis"></h3>
-              </div>
-            </div>
-          </div>
+        <div class="cell large-6 medium-6 how-it-works">
+          <h2>How it works</h2>
+          <ol>
+            <li>Connect to hospital database</li>
+            <li>Select patient</li>
+            <li>Analyze measurements</li>
+            <li>Results</li>
+          </ol>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Graphical visual -->
+
+  <div class="graphical-visual">
+    <div class="grid-container">
+      <div class="grid-x grid-margin-x grid-margin-y align-middle align-center text-center">
+        <div class="cell large-2">
+          <i class="fad fa-database"></i>
+        </div>
+        <div class="cell large-1 show-for-large">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="cell large-1 hide-for-large">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="cell large-2">
+          <i class="fad fa-hospital-user"></i>
+        </div>
+        <div class="cell large-1 show-for-large">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="cell large-1 hide-for-large">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="cell large-2">
+          <i class="fad fa-diagnoses"></i>
+        </div>
+        <div class="cell large-1 show-for-large">
+          <i class="fas fa-arrow-right"></i>
+        </div>
+        <div class="cell large-1 hide-for-large">
+          <i class="fas fa-arrow-down"></i>
+        </div>
+        <div class="cell large-2">
+          <i class="fad fa-poll-people"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Demo of service -->
+
+  <div class="demo-container">
+    <div class="grid-container">
+      <div class="grid-x align-middle grid-margin-x" id="app">
+        <div class="cell large-6 text-center">
+          <h3>Select Patient ID</h3>
+          <form>
+            <select id="selPatient" onchange="selectPatient(this.value)"></select>
+            <table>
+              <thead>
+                <tr>
+                  <th>Measurement</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <div class="cell large-6">
+          <div class="result text-center">
+            <h2>Diagnosis</h2>
+            <h3 id="diagnosis">
+              <!-- Where the diagnosis is displayed -->
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Footer -->
@@ -185,7 +212,6 @@
     </div>
 
   </footer>
-
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="../static/js/app.js"></script>
