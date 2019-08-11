@@ -149,7 +149,7 @@ def features(patientID):
 
     return jsonify(features_dict)
 
-
+# Route for analyzing patient's features (wisconsin) and making a prediction
 @app.route("/analyze/<patientID>")
 def analyze(patientID):
     """Submit data to calculator"""
@@ -217,12 +217,75 @@ def model(patientID):
     # convert X to list of lists 
     features_list = X.values.tolist()
     
+    # Features to be displayed
     feature_values_model = features_list[row_model]
 
     # Create dictionary of keys feature names and values
     features_dict_model = dict(zip(feature_names_model, feature_values_model))
 
     return jsonify(features_dict_model)    
+
+# Route for analyzing patient's features (cytology) and making a prediction
+@app.route("/predict/<patientID>")
+def predict(patientID):
+    """Submit data to calculator"""
+
+    #TODO: Is there a better way to get the data by creating a global variable maybe?
+    
+    # Translate patient ID to row
+    row_model = (int(patientID) - 19000)
+
+    # Grabbing the data from sqlite db and split the data: features and label
+    sel = [
+        Model.thickness,
+        Model.size,
+        Model.shape,
+        Model.adhesion,
+        Model.single,
+        Model.nuclei,
+        Model.chromatin,
+        Model.nucleoli,
+        Model.mitosis,
+        Model.diagnosis
+    ]
+
+    # Query the records
+    model_results = db.session.query(*sel).all()
+
+    # Creating Pandas DataFrame
+    model_df = pd.DataFrame(model_results, columns=["thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
+
+    # Create list of feature names
+    feature_names_model = ["Thickness", "Size", "Shape",\
+        "Adhesion", "Single", "Nuclei", \
+        "Chromatin", "Nucleoli", "Mitosis"]
+    
+    # Assign features and labels
+    X = model_df.drop(columns=["diagnosis"])
+    y = model_df["diagnosis"]
+
+    # convert X to list of lists - this is my X
+    features_list = X.values.tolist()
+
+    # Load model, and scaler 
+    model = load("rf_2.joblib")
+    scaler = load("scaler_2.out")
+
+    # Get features for selected row and scale
+    # row_model = (row_model)[indices.astype(int)]
+    row_model = np.array([row_model])
+    feature_values_model = features_list[row_model]
+    feature_values_model = scaler.transform(feature_values_model)
+
+    # Predict diagnosis
+    prediction = model.predict(feature_values_model)
+    if prediction == 0:
+        diagnosis = "Benign"
+    else:
+        diagnosis = "Malignant"
+
+    return jsonify(diagnosis)
+    # return render_template("calculator.html",diagnosis=diagnosis)
 
 if __name__ == "__main__":
     # TODO: Remeber to turn debugging off when going live! 
