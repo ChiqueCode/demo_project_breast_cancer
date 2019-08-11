@@ -165,6 +165,7 @@ label {
 .code-for-the-cure {
     margin-bottom: 200px;
 }
+
 .code-for-the-cure svg {
     width: 1em;
     vertical-align: -.125em;
@@ -178,6 +179,10 @@ label {
 }
 
 /* Who We Are */
+
+.who-are-we h4.subheader {
+    margin-bottom: 1rem;
+}
 
 .code-for-the-cure .dna-strand {
     font-size: 2rem;

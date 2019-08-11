@@ -25,7 +25,6 @@ var chartGroup = svg
 var url = '/trend';
 
 d3.json(url, { crossOrigin: "anonymous" }).then(function(dataCancer) {
-  console.log(dataCancer);
 
   // Create a function to parse date and time
   var parseTime = d3.timeParse("%Y");
