@@ -272,13 +272,13 @@ def predict(patientID):
     scaler = load("scaler_2.out")
 
     # Get features for selected row and scale
-    # row_model = (row_model)[indices.astype(int)]
-    row_model = np.array([row_model])
     feature_values_model = features_list[row_model]
-    feature_values_model = scaler.transform(feature_values_model)
+
+    # note: tranforming data to 2D format by ading [] for scaler 
+    transformed_features = scaler.transform([feature_values_model])
 
     # Predict diagnosis
-    prediction = model.predict(feature_values_model)
+    prediction = model.predict(transformed_features)
     if prediction == 0:
         diagnosis = "Benign"
     else:
