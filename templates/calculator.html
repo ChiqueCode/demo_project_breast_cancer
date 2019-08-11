@@ -98,36 +98,37 @@
           <img src="../static/images/check.png" alt="Check" style="text-align: center">
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="demo-container">
-    <div class="grid-container">
-      <div class="grid-x align-middle grid-margin-x" id="app">
-        <div class="cell large-6 text-center">
-          <h3>Select Patient ID</h3>
-          <form>
-            <select id="selPatient" onchange="selectPatient(this.value)"></select>
-            <table>
-              <thead>
-                <tr>
-                  <th>Measurement</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-          </form>
-          <button type="submit" class="large button expanded" id="analyze">Analyze</button>
-        </div>
-        <div class="cell large-6">
-          <div class="result text-center">
-            <h3 id="diagnosis">Diagnosis: </h3>
+      <div class="demo-container">
+        <div class="grid-container">
+          <div class="grid-x align-middle grid-margin-x" id="app">
+            <div class="cell large-6 text-center">
+              <h3>Select Patient ID</h3>
+              <form>
+                <select id="selPatient" onchange="selectPatient(this.value)"></select>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Measurement</th>
+                      <th>Value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+            <div class="cell large-6">
+              <div class="result text-center">
+                <h2>Diagnosis</h2>
+                <h3 id="diagnosis"></h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <!-- Footer -->
