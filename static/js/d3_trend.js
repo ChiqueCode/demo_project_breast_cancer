@@ -9,18 +9,17 @@ var height = svgHeight - margin.top - margin.bottom;
 
 // Create an SVG wrapper, append an SVG group that will hold our chart, and shift the latter by left and top margins.
 var svg = d3
-  .select("body")
+  .select("#chart")
   .append("svg")
+  .attr("preserveAspectRatio", "xMinYMin meet")
   .attr("width", svgWidth)
-  .attr("height", svgHeight);
+  .attr("height", svgHeight)
+  .classed("svg-content", true);
 
 var chartGroup = svg
   .append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Import data from an external CSV file
-// d3.csv("../db/usa_rates.csv", function(dataCancer, error) {
-//   if (error) throw error;
 
 var url = '/trend';
 
