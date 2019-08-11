@@ -139,6 +139,8 @@ def features(patientID):
     X = load_breast_cancer().data
     feature_values = X[row]
 
+    print(X)
+
     # Select only features to be displayed
     feature_values = feature_values[20:]
 
@@ -176,8 +178,8 @@ def analyze(patientID):
     # return render_template("calculator.html",diagnosis=diagnosis)
 
 # Route for cytology features
-@app.route("/model")
-def model():
+@app.route("/model/<patientID>")
+def model(patientID):
     """Returns list of features for given patient ID"""
 
     # Converting data into Pandas DF in order to assign X and label
@@ -201,30 +203,26 @@ def model():
     # Creating Pandas DataFrame
     model_df = pd.DataFrame(model_results, columns=["thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
 
-    return jsonify(model_df.to_dict(orient="records"))
-
-
-
-
-    # # Create list of feature names
-    # feature_names_model = ["Thickness", "Size", "Shape",\
-    #     "Adhesion", "Single", "Nuclei", \
-    #     "Chromatin", "Nucleoli", "Mitosis"]
+    # Create list of feature names
+    feature_names_model = ["Thickness", "Size", "Shape",\
+        "Adhesion", "Single", "Nuclei", \
+        "Chromatin", "Nucleoli", "Mitosis"]
     
-    # row_model = int(patientID) - 19000
+    row_model = int(patientID) - 19000
 
-    # Assign random numbers for features
-    # X = random.seed(n)
-    # X = dropped_df.drop(columns=["class"])
-    # feature_values_model = X[row_model]
+    # Assign features and labels
+    X = model_df.drop(columns=["diagnosis"])
+    y = model_df["diagnosis"]
 
-    # Select only features to be displayed
-    # feature_values_model = feature_values_model[20:]
+    # convert X to list of lists 
+    features_list = X.values.tolist()
+    
+    feature_values_model = features_list[row_model]
 
-    # # Create dictionary of keys feature names and values
-    # features_dict_model = dict(zip(feature_names_model, feature_values_model))
+    # Create dictionary of keys feature names and values
+    features_dict_model = dict(zip(feature_names_model, feature_values_model))
 
-    # return jsonify(features_dict_model)    
+    return jsonify(features_dict_model)    
 
 if __name__ == "__main__":
     # TODO: Remeber to turn debugging off when going live! 
