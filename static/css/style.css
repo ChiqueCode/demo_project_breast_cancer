@@ -1,25 +1,31 @@
 /* Color palette based on: https://colorhunt.co/palette/148314 */
 
 .yellow-sun-rise {
-  color: #f4ea9d;
+    color: #f4ea9d;
 }
+
 .warm-sun-set {
-  color: #c78d78;
+    color: #c78d78;
 }
+
 .bca-pink {
-  color: #e9b7ca;
+    color: #e9b7ca;
 }
+
 .royale-purple {
-  color: #3b0b58;
+    color: #3b0b58;
 }
+
 .text-color {
-  color: #11010e;
+    color: #11010e;
 }
+
 .text-color-on-dark {
-  color: #fff3f7;
+    color: #fff3f7;
 }
+
 .link-color {
-  color: #854777;
+    color: #854777;
 }
 
 /* Google Fonts
@@ -32,50 +38,60 @@ Subheadings
 */
 
 body {
-  color: #11010e;
-  background-color: #fff3f7;
-  font-family: "Open Sans", sans-serif;
+    color: #11010e;
+    background-color: #fff3f7;
+    font-family: "Open Sans", sans-serif;
 }
 
 /* Links */
 
 a,
 a:visited {
-  color: #854777;
+    color: #854777;
 }
 
 a:hover,
 a:focus {
-  color: #3b0b58;
+    color: #3b0b58;
 }
 
 a.button,
-a.button:visited {
-  color: #fff3f7;
-}
-
+a.button:visited,
 a.button:hover,
 a.button:focus {
-  color: #fff3f7;
+    color: #fff3f7;
 }
 
 /* Navigation */
 
 .top-bar,
 .top-bar ul {
-  background-color: transparent;
+    background-color: transparent;
+}
+
+.top-bar .svg-inline--fa,
+.button .svg-inline--fa {
+    margin-right: 5px;
 }
 
 .top-bar {
-  z-index: 101;
-  position: relative;
-  padding-top: 25px;
-  padding-bottom: 25px;
+    z-index: 101;
+    position: relative;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-transform: uppercase;
 }
 
 .top-bar .menu-text {
-  font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
 }
+
+.top-bar .menu-text svg {
+    width: 1.25em;
+    vertical-align: -.125em;
+}
+
 
 /* For all headings */
 h1,
@@ -84,107 +100,121 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Merriweather", serif;
-}
-/* SONYA - NOT SURE IF YOU WANT THIS */
-h1,
-h4 {
-  text-align: center;
+    font-family: "Merriweather", serif;
+    color: hsl(337, 53%, 20%);
 }
 
 .subheader {
-  font-family: "Oswald", sans-serif;
-  color: hsl(337, 53%, 35%);
-}
-
-label {
-  font-family: "Oswald", sans-serif;
+    font-family: "Oswald", sans-serif;
+    color: hsla(337, 53%, 20%, 55%);
 }
 
 /* Sections */
 
 #header {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 #heading {
-  font-size: 80px;
+    font-size: 80px;
 }
 
 #sub-heading {
-  font-size: 60px;
+    font-size: 60px;
 }
 
 /* Buttons */
 
 .button {
-  background-color: #3b0b58;
-  color: #fff3f7;
+    background-color: #3b0b58;
+    color: #fff3f7;
+    border-radius: 10px;
 }
+
 .button:hover,
 .button:focus {
-  background-color: #854777;
-  color: #fff3f7;
+    background-color: #854777;
+    color: #fff3f7;
 }
 
 /* CTA Banner */
 
 #banner {
-  /* Calculating the height based on the video and top-bar */
-  height: calc(100vh - 105.75px);
+    /* Calculating the height based on the video and top-bar */
+    height: calc(100vh - 105.75px);
 }
 
 .cta-container {
-  background-color: hsla(340, 100%, 98%, 0.75);
-  padding: 50px;
+    margin-bottom: 100px;
 }
 
-.cta-container h1,
-.cta-container ul {
-  color: hsl(337, 53%, 20%);
+.cta-container .subheader {
+    line-height: 1em;
+    font-size: 8rem;
+    font-weight: 700;
+    letter-spacing: -0.25rem;
 }
 
 .cta-container ul {
-  list-style-type: none;
+    color: hsl(337, 53%, 20%);
+}
+
+.code-for-the-cure {
+    margin-bottom: 200px;
+}
+
+.code-for-the-cure svg {
+    width: 1em;
+    vertical-align: -.125em;
+}
+
+/* Medium and Small breakpoints */
+@media screen and (min-width: 40em) and (max-width: 63.9375em),
+screen and (max-width: 39.9375em) {
+    .code-for-the-cure {
+        margin-bottom: 100px;
+    }
+}
+
+/* Who We Are */
+
+.who-are-we h4.subheader {
+    margin-bottom: 1rem;
+}
+
+.code-for-the-cure .dna-strand {
+    font-size: 2rem;
+}
+
+.our-services .machine-learning {
+    font-size: 4rem;
+}
+
+.our-services .machine-learning .fa-robot {
+    opacity: .3;
+    font-size: 13rem;
 }
 
 /* Pull Quote */
 
 .pull-container {
-  font-family: "Oswald", sans-serif;
-  background-color: hsla(16, 41%, 63%, 0.45);
+    font-family: "Oswald", sans-serif;
+    background-color: hsla(16, 41%, 63%, 0.45);
+    background: linear-gradient(hsla(16, 41%, 63%, 0.45), hsla(16, 41%, 63%, 0.45)), url("../images/fabric_plaid_@2X.png");
 }
 
 .pull-container blockquote,
 .pull-container cite {
-  color: hsl(16, 41%, 40%);
+    color: hsl(16, 41%, 40%);
 }
+
 .pull-container blockquote {
-  font-size: 30px;
-  border-left-color: hsl(16, 41%, 40%);
+    font-size: 30px;
+    border-left-color: hsl(16, 41%, 40%);
 }
 
-/* Demo */
-
-.how-container {
-  color: #3b0b58;
-  /* background-color: hsla(53, 80%, 79%, 0.45); */
-  padding-top: 25px;
-  padding-bottom: 25px;
-}
-
-.demo-container th {
-  text-align: center;
-}
-
-.demo-container {
-  background-color: hsla(53, 80%, 79%, 0.45);
-}
-
-.result {
-  padding: 40px;
-  background-color: #c78d78;
-  color: #fff3f7;
+.pull-container img {
+    border-radius: 10px;
 }
 
 /* Sections */
@@ -192,126 +222,145 @@ label {
 .banner-container,
 .pull-container,
 .stats-container,
-.request-consultation,
-.how-container,
 .demo-container,
+.who-are-we,
+.cta-03,
 footer {
-  padding-top: 100px;
-  padding-bottom: 100px;
+    padding-top: 200px;
+    padding-bottom: 200px;
 }
 
-/* Request Consultation */
+/* Medium and Small breakpoints */
+@media screen and (min-width: 40em) and (max-width: 63.9375em),
+screen and (max-width: 39.9375em) {
 
-.request-consultation {
-  padding-top: 50px;
+    .banner-container,
+    .pull-container,
+    .stats-container,
+    .demo-container,
+    .who-are-we,
+    .cta-03,
+    footer {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
 }
 
 /* Statistic Section */
 .stats-container {
-  background-color: hsla(53, 80%, 79%, 0.45);
-  font-family: "Oswald", sans-serif;
-  font-size: 20px;
-  color: hsl(53, 80%, 15%);
+    background: linear-gradient(hsla(53, 80%, 79%, 0.45), hsla(53, 80%, 79%, 0.45)), url("../images/interlaced.png");
+    font-family: "Oswald", sans-serif;
+    font-size: 20px;
+    color: hsl(53, 80%, 15%);
 }
 
 .stats-cell {
-  position: relative;
-  padding: 100px;
+    position: relative;
+    padding: 100px;
 }
 
-@media print, screen and (min-width: 40em) {
-  .stats-cell {
-    padding: 60px;
-  }
+@media print,
+screen and (min-width: 40em) {
+    .stats-cell {
+        padding: 60px;
+    }
 }
 
 .stats-cell p {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
 }
 
 .stats-cell::after {
-  content: "";
-  position: absolute;
-  top: 55%;
-  right: 50%;
-  bottom: auto;
-  left: auto;
-  z-index: 0;
-  height: 15rem;
-  width: 15rem;
-  background: #fff3f7;
-  border-radius: 50%;
-  -webkit-transform: translate(50%, -65%);
-  transform: translate(50%, -65%);
-  opacity: 0.6;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    bottom: auto;
+    left: auto;
+    z-index: 0;
+    height: 20rem;
+    width: 20rem;
+    background: #fff3f7;
+    border-radius: 50%;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+    opacity: 0.6;
 }
 
-/* Home Page Video from Coverr @ https://coverr.co/videos/Manila%20Walk */
+/* Home Page Video from Coverr @ https://coverr.co/videos/Training%20breathing */
 
 .homepage-hero-module {
-  border-right: none;
-  border-left: none;
-  position: relative;
+    border-right: none;
+    border-left: none;
+    position: relative;
 }
 
 .no-video .video-container video,
 .touch .video-container video {
-  display: none;
+    display: none;
 }
 
 .no-video .video-container .poster,
 .touch .video-container .poster {
-  display: block !important;
+    display: block !important;
 }
 
 .video-container {
-  position: relative;
-  bottom: 0%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: #000;
+    position: relative;
+    bottom: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
 }
 
 .video-container .poster img {
-  width: 100%;
-  bottom: 0;
-  position: absolute;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
 }
 
 .video-container .filter {
-  z-index: 100;
-  position: absolute;
-  background: hsla(340, 100%, 98%, 0.75);
-  width: 100%;
+    z-index: 100;
+    position: absolute;
+    background: hsla(340, 100%, 98%, 0.5);
+    width: 100%;
 }
 
 .video-container video {
-  position: absolute;
-  z-index: 0;
-  bottom: 0;
-  background-position: center;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: 50% 50%;
-  object-position: 50% 50%;
-  -webkit-filter: blur(0);
-  filter: blur(0);
-  height: 100%;
-  transition: -webkit-filter 0.35s ease-in-out;
-  transition: filter 0.35s ease-in-out;
-  transition: filter 0.35s ease-in-out, -webkit-filter 0.35s ease-in-out;
-  width: 100%;
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    background-position: center;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 50% 50%;
+    object-position: 50% 50%;
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    height: 100%;
+    transition: -webkit-filter 0.35s ease-in-out;
+    transition: filter 0.35s ease-in-out;
+    transition: filter 0.35s ease-in-out, -webkit-filter 0.35s ease-in-out;
+    width: 100%;
 }
 
 .video-container video.fillWidth {
-  width: 100%;
+    width: 100%;
 }
 
 .video-container video.fillWidth {
-  width: 100%;
+    width: 100%;
+}
+
+/* CTA 03 */
+
+.cta-03 {
+    background: #e9b7ca;
+    background: linear-gradient(hsla(337, 53%, 20%, 0.45), hsla(337, 53%, 20%, 0.45)), url("../images/email-pattern.png");
 }
 
 /*
@@ -319,103 +368,167 @@ footer {
  */
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 /* Footer */
 
 footer {
-  background-color: hsl(277, 88%, 10%);
-  color: hsl(277, 10%, 60%);
+    background-color: hsl(277, 88%, 10%);
+    background: linear-gradient(hsla(277, 88%, 10%, 0.45), hsla(277, 88%, 10%, 0.45)), url("../images/vertical_cloth_@2X.png");
+    color: hsl(277, 10%, 60%);
 }
 
 footer ul .no-bullet {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 /* link should look the same after visiting it */
 footer a,
 footer a:visited {
-  color: hsl(277, 10%, 60%);
+    color: hsl(277, 10%, 60%);
 }
+
 footer a:hover,
 footer a:focus {
-  color: hsl(277, 40%, 40%);
+    color: hsl(277, 40%, 40%);
 }
 
- /* Map */
+/* Story Page */
 
- #map {
-  min-height: 500px;
-  width: 100%;
+.our-story-who-we-are,
+.us-map,
+.breast-cancer-chart {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
-body {
-  padding: 0;
-  margin: 0;
-}
+/* Leaflet maps styles */
 
-#map,
-body,
-html {
-  height: 100%;
+#map {
+    min-height: 500px;
+    width: 100%;
+    height: 100%;
 }
-/* Custom CSS*/
 
 .legend {
-color: #555;
-padding: 6px 8px;
-font: 12px Arial, Helvetica, sans-serif;
-font-weight: bold;
-background: white;
-box-shadow: 0 0 15px rgba(0,0,0,0.2);
-border-radius: 5px;
-}
-.legend ul {
-list-style-type: none;
-padding: 0;
-margin: 0;
-clear: both;
-}
-.legend li {
-display: inline-block;
-width: 22px;
-height: 22px;
-opacity: 0.7;
-}
-.legend .min {
-float: left;
-padding-bottom: 5px;
-}
-.legend .max {
-float: right;
+    color: #555;
+    padding: 6px 8px;
+    font: 12px Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    background: white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }
 
-/* d3 Chart in Story */
+.legend ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+}
+
+.legend li {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    opacity: 0.7;
+}
+
+.legend .min {
+    float: left;
+    padding-bottom: 5px;
+}
+
+.legend .max {
+    float: right;
+}
+
 .line {
-  fill: none;
-  stroke-width: 2px;
+    fill: none;
+    stroke-width: 2px;
 }
 
 .green {
-  stroke: green;
+    stroke: #3b0b58;
 }
 
 .blue {
-  stroke: blue;
+    stroke: #c78d78;
 }
 
 .text {
-  font-size: 16px;
-  text-anchor: middle;
+    text-anchor: middle;
+}
+
+.deaths-text,
+.incidents-text {
+    font-family: "Oswald",
+        sans-serif;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .deaths-text {
-  fill: blue;
+    fill: #c78d78;
 }
 
 .incidents-text {
-  font-size: 16px;
-  fill: green;
-  text-anchor: middle;
+    fill: #3b0b58;
+}
+
+/* Request Consultation */
+
+.request-consultation {
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+label {
+    font-family: "Oswald", sans-serif;
+    text-transform: uppercase;
+}
+
+/* Demo Page (aka /calculator)*/
+
+.demo-container th {
+    text-align: center;
+}
+
+.demo-container {
+    background-color: hsla(53, 80%, 79%, 0.45);
+}
+
+.result {
+    padding: 40px;
+    background-color: #c78d78;
+    color: #fff3f7;
+}
+
+.how-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.how-it-works {
+    padding: 3rem;
+    background: #854777;
+    color: #fff3f7;
+    border-radius: 10px;
+}
+
+.how-it-works h2 {
+    color: #fff3f7;
+}
+
+.graphical-visual {
+    background: linear-gradient(hsla(16, 41%, 63%, 0.25), hsla(16, 41%, 63%, 0.25)),
+        url("../images/interlaced.png");
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.graphical-visual svg {
+    color: #c78d78;
+    font-size: 6rem;
 }
