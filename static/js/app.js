@@ -72,17 +72,35 @@ function selectPatient(patientID) {
     });
   });
 
-  // if statement to display malignant if either diagnosis == 1
 
-  // Fetch results and display in #diagnosis
-  d3.json(analysisURL).then(function(results) {
-    resultDisplay.html(results);
-  });
-
-  d3.json(predictURL).then(function(resultsCytology) {
+  // // Fetch results and display in #diagnosis
+  // d3.json(analysisURL).then(function(resultsWisconsin) {
+  //   resultDisplay.html(resultsWisconsin);
+  // });
+  
+  // Save results in variables
+  let diagnosisC = d3.json(predictURL).then(function(resultsCytology) {
     console.log(resultsCytology);
   });
-  
+
+  let diagnosisW = d3.json(analysisURL).then(function(resultsW) {
+    console.log(resultsW);
+  });
+
+  // if statement to spit out the diagnosis from both datasets 
+  if (diagnosisC === "Malignant" || diagnosisW === "Malignant") {
+    console.log("Bummer results");
+  } else {
+    console.log("Good");
+  };  
+  // if (diagnosisC == "Malignant") {
+  //   console.log("Bummer"); 
+  // } else if (diagnosisW == "Malignant") {
+  //   console.log("Bummer");
+  // } else {
+  //   console.log("Good");
+  // }; 
+
 }
 
 // Create drop down
