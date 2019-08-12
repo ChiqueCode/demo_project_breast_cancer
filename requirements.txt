@@ -1,0 +1,6 @@
+Flask==1.0.2
+Flask-Cors==3.0.7
+Flask-SQLAlchemy==2.4.0
+gunicorn==19.8.1
+jsonschema==2.6.0
+SQLAlchemy==1.2.10
