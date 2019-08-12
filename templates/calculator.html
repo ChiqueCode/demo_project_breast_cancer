@@ -110,6 +110,36 @@
           </div>
         </div>
 
+
+        <div class="demo-container">
+            <div class="grid-container">
+              <div class="grid-x align-middle grid-margin-x" id="app">
+                <div class="cell large-6 text-center">
+                  <h3>Select Patient ID</h3>
+                  <form>
+                  <select id="selPatient" onchange="selectPatient(this.value)"></select>
+                  <table>
+                      <thead>
+                        <tr>
+                          <th>Measurement</th>
+                          <th>Value</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                  </table>
+                  </form>
+                </div>
+                <div class="cell large-6">
+                  <div class="result text-center">
+                    <h2>Diagnosis</h2>
+                    <h3 id="diagnosis"></h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>                
+
   <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="../static/js/app.js"></script>
 
@@ -119,11 +149,8 @@
         <div class="cell large-12 text-center">
           <h3>Site Created with ❤️ by:</h3>
           <ul class="no-bullet">
-            <li><a href="https://github.com/gretelup">Gretel Uptegrove</a></li>
-            <li>Arjun Subramaniam</li>
-            <li>Mike Lygas</li>
-            <li>Smita Sharma</li>
             <li><a href="https://chique.dev/">Kseniya Bogoslavskaya</a></li>
+            <li><a href="https://github.com/gretelup">Gretel Uptegrove</a></li>
           </ul>
           <p>
             <small>
