@@ -288,5 +288,6 @@ def predict(patientID):
     # return render_template("calculator.html",diagnosis=diagnosis)
 
 if __name__ == "__main__":
-    # TODO: Remeber to turn debugging off when going live! 
-    app.run(debug=True, port=8000, host="localhost", threaded=True)
+    app.run()
+    # Deleting params as we are not running it locally anymore
+    # app.run(debug=True, port=8000, host="localhost", threaded=True)
