@@ -42,6 +42,7 @@ function selectPatient(patientID) {
   table.html("");
   resultDisplay.html("&nbsp;");
 
+  // url for wisconsin analysis
   var featuresURL = `/features/${patientID}`;
   var analysisURL = `/analyze/${patientID}`;
 
@@ -54,6 +55,24 @@ function selectPatient(patientID) {
       tableRow.append("td").text(value);
     });
   });
+
+  // url for cytology analysis 
+  var modelURL = `/model/${patientID}`;
+  var predictURL = `/predict/${patientID}`;
+
+  // Fetch dictionary of the name of the features and corresponding values
+  d3.json(modelURL).then(function(modelFeatures) {
+    // For each feature, enter the feature name and the feature value into a row
+    Object.entries(modelFeatures).forEach(([key, value]) => {
+      var tableRow = table.append("tr");
+      tableRow.append("td").text(key);
+      tableRow.append("td").text(value);
+    });
+  });  
+
+
+
+  // if statement to display malignant if either diagnosis == 1
 
   // Fetch results and display in #diagnosis
   d3.json(analysisURL).then(function(results) {

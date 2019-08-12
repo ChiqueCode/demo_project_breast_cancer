@@ -274,7 +274,7 @@ def predict(patientID):
     # Get features for selected row and scale
     feature_values_model = features_list[row_model]
 
-    # note: tranforming data to 2D format by ading [] for scaler 
+    # note: transforming data to 2D format by ading [] for scaler 
     transformed_features = scaler.transform([feature_values_model])
 
     # Predict diagnosis
