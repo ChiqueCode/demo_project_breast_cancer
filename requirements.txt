@@ -1,4 +1,4 @@
-Flask==1.0.2
+Flask==1.0.3
 Flask-Cors==3.0.7
 Flask-SQLAlchemy==2.4.0
 gunicorn==19.8.1
@@ -15,7 +15,6 @@ db==0.1.1
 db-sqlite3==0.0.1
 docutils==0.14
 fanstatic==1.1
-Flask==1.0.3
 gunicorn==19.9.0
 idna==2.8
 iso3166==1.0
