@@ -35,18 +35,24 @@ function selectPatient(patientID) {
     */
 
   // Saving the table and results as variables
-  var table = d3.select("tbody");
+  var table = d3.select("#uwds");
+  var tableCytology = d3.select("#cds");
   var resultDisplay = d3.select("#diagnosis");
 
   // Clear values for existing feature table and diagnosis
   table.html("");
+  tableCytology.html("");
   resultDisplay.html("&nbsp;");
 
   // url for wisconsin analysis
   var featuresURL = `/features/${patientID}`;
   var analysisURL = `/analyze/${patientID}`;
 
-  // Fetch dictionary of the name of the features and corresponding values
+  // url for cytology analysis
+  var modelURL = `/model/${patientID}`;
+  var predictURL = `/predict/${patientID}`;
+
+  // Fetch dictionary of the name of the features and corresponding values for wisconsin ds
   d3.json(featuresURL).then(function(patientFeatures) {
     // For each feature, enter the feature name and the feature value into a row
     Object.entries(patientFeatures).forEach(([key, value]) => {
@@ -56,21 +62,15 @@ function selectPatient(patientID) {
     });
   });
 
-  // url for cytology analysis 
-  var modelURL = `/model/${patientID}`;
-  var predictURL = `/predict/${patientID}`;
-
-  // Fetch dictionary of the name of the features and corresponding values
+  // Fetch dictionary of the name of the features and corresponding values for cytology ds
   d3.json(modelURL).then(function(modelFeatures) {
     // For each feature, enter the feature name and the feature value into a row
     Object.entries(modelFeatures).forEach(([key, value]) => {
-      var tableRow = table.append("tr");
+      var tableRow = tableCytology.append("tr");
       tableRow.append("td").text(key);
       tableRow.append("td").text(value);
     });
-  });  
-
-
+  });
 
   // if statement to display malignant if either diagnosis == 1
 
@@ -78,6 +78,11 @@ function selectPatient(patientID) {
   d3.json(analysisURL).then(function(results) {
     resultDisplay.html(results);
   });
+
+  d3.json(predictURL).then(function(resultsCytology) {
+    console.log(resultsCytology);
+  });
+  
 }
 
 // Create drop down
