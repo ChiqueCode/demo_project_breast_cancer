@@ -87,19 +87,72 @@ function selectPatient(patientID) {
     console.log(resultsW);
   });
 
-  // if statement to spit out the diagnosis from both datasets 
-  if (diagnosisC === "Malignant" || diagnosisW === "Malignant") {
-    console.log("Bummer results");
-  } else {
-    console.log("Good");
-  };  
-  // if (diagnosisC == "Malignant") {
-  //   console.log("Bummer"); 
-  // } else if (diagnosisW == "Malignant") {
-  //   console.log("Bummer");
+  // // if statement to spit out the diagnosis from both datasets 
+  // if (diagnosisC === "Malignant" || diagnosisW === "Malignant") {
+  //   console.log("Bummer results");
   // } else {
   //   console.log("Good");
-  // }; 
+  // };  
+
+  // async function fethcURLs() {
+  //   try {
+  //     var data = await Promise.all([
+  //       fetch(predictURL).then((response) => response.json()),
+  //       fetch(analysisURL).then((response) => response.json()),
+  //     ])
+  //   }
+
+  // }
+
+  // //  Attempt 2
+  // function predictFunc(predictURL, cb) {
+  //   var responseCytology = d3.json(predictURL).then(function(resultsCytology) {
+  //     return(resultsCytology);
+  //   });
+  //   var randomDelay = (Math.round(Math.random() * 1E4) % 8000) + 1000;
+  
+  //   console.log("Requesting: " + predictURL);
+  
+  //   setTimeout(function(){
+  //     cb(responseCytology[predictURL]);
+  //   },randomDelay);
+  // };
+  // predictFunc();
+
+  // Attempt 3
+  // async function predictFunc() {
+    
+  //   // read our cytology
+  //   let responseCytology = await fetch(`/predict/${patientID}`);
+  //   let awaitCytology = await responseCytology.json();
+
+  //     // read our wisconsin
+  //   let responseWisconsin = await fetch(`/analyze/${patientID}`);
+  //   let awaitWisconsin = await responseWisconsin.json();
+
+  //   await new Promise((resolve, reject) => setTimeout(resolve, 3000));
+
+  //   return awaitCytology;
+    
+  //   // Unreachable
+  //   // return awaitWisconsin;
+
+  // }  
+  // predictFunc()
+
+  // Attempt 4
+  async function damn() {
+    let results = await Promise.all([
+      fetch(`/analyze/${patientID}`),
+      fetch(`/predict/${patientID}`),
+    ]);
+  
+    console.log(results);
+    };
+  damn();  
+
+  let test = fetch(`/analyze/${patientID}`);
+  console.log(test);
 
 }
 
