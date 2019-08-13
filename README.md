@@ -2,7 +2,7 @@
 
 ## Website
 
-INSERT WEBSITE HERE
+https://codeforthecure.herokuapp.com/
 
 ## Motivation & Summary
 
@@ -95,7 +95,7 @@ fontawesome (for social links)
 To make our website aesthetically appealing, achieve visual harmony, and to maximize UX, we used resources such as Google Fonts, Unsplash, Coverr, Colorhunt, and Color Converter (for HSLA specifically) to make the background and the font color the same with different saturation, lightness and opacity which helps to keep with a soft monochromatic feel.
 Overall, the main goal for the website is to make prospective doctors find our service as a valuable asset to their business through our ML service.
 
-### Step 7: Deploy on Heroku
+### Step 6: Deploy on Heroku
 
 * Created a `requirements.txt` and a `Procfile`.
 * Deployed app on Heroku.
