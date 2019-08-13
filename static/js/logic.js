@@ -1,7 +1,7 @@
 // Create a map object
 var myMap = L.map("map", {
   center: [37.09, -95.71],
-  zoom: 4.5
+  zoom: 4
 });
 
 // Add a tile layer
@@ -64,14 +64,14 @@ d3.json(url, { crossOrigin: "anonymous" }).then(function(response) {
       radius: markerSize(response[i].percentage_incidence)
     })
       .bindPopup(
-        "<h1>" +
+        "<h4>" +
           response[i].state +
-          "</h1> <hr> <h3>Breast Cancer Incidents: " +
+          "</h4> <hr> <h6>Breast Cancer Incidents: " +
           response[i].incidence +
-          "</h3>" +
-          " <hr> <h3>Breast Cancer Deathes: " +
+          "</h6>" +
+          " <hr> <h6>Breast Cancer Deaths: " +
           response[i].death_count +
-          "</h3>"
+          "</h6>"
       )
       .addTo(myMap);
   }
