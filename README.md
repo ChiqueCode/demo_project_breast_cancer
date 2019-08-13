@@ -9,7 +9,7 @@ INSERT WEBSITE HERE
 Breast cancer is the most prevalent type of cancer across the globe, and the United States specifically has the highest rate of cancer diagnosis. Currently, the only way to diagnose breast cancer is to have the cell tissue inspected by a pathologist; however, many medical centers do not have in-house pathologist, requiring these tissue samples to be sent to an outside facility, sometimes located a great distance. This can cause a significant delay in the start of treatment. Any delay in treatment can have a detrimental affect on prognosis. 
 
 The purpose of the app is: to help hospitals to assign patients to either benign or malignant group in order to: 
-* Avoid delays in treatment
+* Prevent delays in treatment
 * Reduce anxiety while waiting for the test results from pathologist
 * Save patient’s money for pathologist test.
 
