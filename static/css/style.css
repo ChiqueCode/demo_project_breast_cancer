@@ -195,7 +195,13 @@ h6 {
     .cta-container .subheader {
         font-size: 4.5rem;
         line-height: 4rem;
-        margin-bottom: 40px;
+    }
+
+    #banner {
+        -webkit-box-align: start;
+        -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+        align-items: flex-start;
     }
 }
 
