@@ -90,11 +90,12 @@ const printResult = async patientID => {
   console.log(data); // Save results in the objects
 
   uwResult = data[0];
-  cResult = data[1]; // if statement to return the diagnosis
+  cResult = data[1]; 
 
   // Saving result in a var to display it on the page
   var final = "";
 
+  // if statement to return the diagnosis
   if (uwResult === "Malignant" || cResult === "Malignant") {
     // console.log("Malignant");
     final = "Malignant";
