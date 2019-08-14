@@ -111,10 +111,10 @@ def cases():
     return render_template("cases.html")
 
 
-# Demo/calculator route
-@app.route("/calculator")
+# Demo route
+@app.route("/demo")
 def calc():
-    return render_template("calculator.html")
+    return render_template("demo.html")
 
 
 # Call to action/request assesment route 
@@ -152,7 +152,7 @@ def features(patientID):
 # Route for analyzing patient's features (wisconsin) and making a prediction
 @app.route("/analyze/<patientID>")
 def analyze(patientID):
-    """Submit data to calculator"""
+    """Submit data to demo"""
 
     # Translate patient ID to row
     row = (int(patientID) - 19000)
@@ -175,7 +175,7 @@ def analyze(patientID):
         diagnosis = "Malignant"
 
     return jsonify(diagnosis)
-    # return render_template("calculator.html",diagnosis=diagnosis)
+    # return render_template("demo.html",diagnosis=diagnosis)
 
 # Route for cytology features
 @app.route("/model/<patientID>")
@@ -228,7 +228,7 @@ def model(patientID):
 # Route for analyzing patient's features (cytology) and making a prediction
 @app.route("/predict/<patientID>")
 def predict(patientID):
-    """Submit data to calculator"""
+    """Submit data to demo"""
 
     #TODO: Is there a better way to get the data by creating a global variable maybe?
     
@@ -285,7 +285,7 @@ def predict(patientID):
         diagnosis = "Malignant"
 
     return jsonify(diagnosis)
-    # return render_template("calculator.html",diagnosis=diagnosis)
+    # return render_template("demo.html",diagnosis=diagnosis)
 
 if __name__ == "__main__":
     app.run()
