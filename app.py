@@ -294,6 +294,7 @@ def predict(patientID):
 
 
 if __name__ == "__main__":
+    # app.run() without arguments for Heroku deployment
     app.run()
-    # Deleting params as we are not running it locally anymore
+    # app.run() with arguments for local dev
     # app.run(debug=True, port=8000, host="localhost", threaded=True)

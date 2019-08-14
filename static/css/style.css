@@ -193,8 +193,9 @@ h6 {
 /* Small only */
 @media screen and (max-width: 39.9375em) {
     .cta-container .subheader {
-        font-size: 5rem;
-        line-height: 4.5rem;
+        font-size: 4.5rem;
+        line-height: 4rem;
+        margin-bottom: 40px;
     }
 }
 
