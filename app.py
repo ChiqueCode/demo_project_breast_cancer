@@ -12,7 +12,7 @@ from flask import (
 from joblib import load
 from sklearn.datasets import load_breast_cancer
 
-# Sqlite 
+# Sqlite
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -21,7 +21,7 @@ from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 
-#Set up Flask
+# Set up Flask
 app = Flask(__name__)
 
 # Database Setup
@@ -44,8 +44,8 @@ def percentage_func():
     # df = pd.read_sql_query(stmt, datasets.session.bind)
     # return jsonify(list(df))
 
- #TODO: Change "sel" to select all
- 
+ # TODO: Change "sel" to select all
+
     sel = [
         States_percentage.state,
         States_percentage.abr,
@@ -62,14 +62,16 @@ def percentage_func():
     percentage_results = db.session.query(*sel).all()
 
     # Creating Pandas DataFrame
-    percentage_df = pd.DataFrame(percentage_results, columns=["state", "abr", "lat", "lng", "incidence", "population", "percentage_incidence", "death_count", "percentage_deaths"])
+    percentage_df = pd.DataFrame(percentage_results, columns=[
+                                 "state", "abr", "lat", "lng", "incidence", "population", "percentage_incidence", "death_count", "percentage_deaths"])
 
     # Return results in JSON format
     return jsonify(percentage_df.to_dict(orient="records"))
 
+
 @app.route("/trend")
 def trend_func():
- 
+
     sel = [
         Trend.year,
         Trend.incidents,
@@ -81,7 +83,8 @@ def trend_func():
     # percentage_results = db.session.query.all()
 
     # Creating Pandas DataFrame
-    trend_df = pd.DataFrame(trend_results, columns=["year", "incidents", "deaths"])
+    trend_df = pd.DataFrame(trend_results, columns=[
+                            "year", "incidents", "deaths"])
 
     # Return results in JSON format
     return jsonify(trend_df.to_dict(orient="records"))
@@ -117,24 +120,24 @@ def calc():
     return render_template("demo.html")
 
 
-# Call to action/request assesment route 
+# Call to action/request assesment route
 @app.route("/cta")
 def cta():
     return render_template("cta.html")
-   
+
 # Route for wisconsin features
 @app.route("/features/<patientID>")
 def features(patientID):
     """Returns list of features for given patient ID"""
 
     # Create list of feature names
-    feature_names = ["Radius (worst)", "Texture (worst)", "Perimeter (worst)",\
-        "Area (worst)", "Smoothness (worst)", "Compactness (worst)", \
-        "Concavity (worst)", "Concave points (worst)", "Symmetry (worst)", \
-        "Fractal dimension (worst)"]
-    
+    feature_names = ["Radius (worst)", "Texture (worst)", "Perimeter (worst)",
+                     "Area (worst)", "Smoothness (worst)", "Compactness (worst)",
+                     "Concavity (worst)", "Concave points (worst)", "Symmetry (worst)",
+                     "Fractal dimension (worst)"]
+
     row = int(patientID) - 19000
-   
+
     # Load dataset from sklearn and set X to feature array
     X = load_breast_cancer().data
     feature_values = X[row]
@@ -157,7 +160,7 @@ def analyze(patientID):
     # Translate patient ID to row
     row = (int(patientID) - 19000)
 
-    # Load features, model, and scaler 
+    # Load features, model, and scaler
     X = load_breast_cancer().data
     model = load("rf_model.joblib")
     scaler = load("scaler.out")
@@ -201,37 +204,38 @@ def model(patientID):
     model_results = db.session.query(*sel).all()
 
     # Creating Pandas DataFrame
-    model_df = pd.DataFrame(model_results, columns=["thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
+    model_df = pd.DataFrame(model_results, columns=[
+                            "thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
 
     # Create list of feature names
-    feature_names_model = ["Thickness", "Size", "Shape",\
-        "Adhesion", "Single", "Nuclei", \
-        "Chromatin", "Nucleoli", "Mitosis"]
-    
+    feature_names_model = ["Thickness", "Size", "Shape",
+                           "Adhesion", "Single", "Nuclei",
+                           "Chromatin", "Nucleoli", "Mitosis"]
+
     row_model = int(patientID) - 19000
 
     # Assign features and labels
     X = model_df.drop(columns=["diagnosis"])
     y = model_df["diagnosis"]
 
-    # convert X to list of lists 
+    # convert X to list of lists
     features_list = X.values.tolist()
-    
+
     # Features to be displayed
     feature_values_model = features_list[row_model]
 
     # Create dictionary of keys feature names and values
     features_dict_model = dict(zip(feature_names_model, feature_values_model))
 
-    return jsonify(features_dict_model)    
+    return jsonify(features_dict_model)
 
 # Route for analyzing patient's features (cytology) and making a prediction
 @app.route("/predict/<patientID>")
 def predict(patientID):
     """Submit data to demo"""
 
-    #TODO: Is there a better way to get the data by creating a global variable maybe?
-    
+    # TODO: Is there a better way to get the data by creating a global variable maybe?
+
     # Translate patient ID to row
     row_model = (int(patientID) - 19000)
 
@@ -253,13 +257,14 @@ def predict(patientID):
     model_results = db.session.query(*sel).all()
 
     # Creating Pandas DataFrame
-    model_df = pd.DataFrame(model_results, columns=["thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
+    model_df = pd.DataFrame(model_results, columns=[
+                            "thickness", "size", "shape", "adhesion", "single", "nuclei", "chromatin", "nucleoli", "mitosis", "diagnosis"])
 
     # Create list of feature names
-    feature_names_model = ["Thickness", "Size", "Shape",\
-        "Adhesion", "Single", "Nuclei", \
-        "Chromatin", "Nucleoli", "Mitosis"]
-    
+    feature_names_model = ["Thickness", "Size", "Shape",
+                           "Adhesion", "Single", "Nuclei",
+                           "Chromatin", "Nucleoli", "Mitosis"]
+
     # Assign features and labels
     X = model_df.drop(columns=["diagnosis"])
     y = model_df["diagnosis"]
@@ -267,14 +272,14 @@ def predict(patientID):
     # convert X to list of lists - this is my X
     features_list = X.values.tolist()
 
-    # Load model, and scaler 
+    # Load model, and scaler
     model = load("rf_2.joblib")
     scaler = load("scaler_2.out")
 
     # Get features for selected row and scale
     feature_values_model = features_list[row_model]
 
-    # note: transforming data to 2D format by ading [] for scaler 
+    # note: transforming data to 2D format by ading [] for scaler
     transformed_features = scaler.transform([feature_values_model])
 
     # Predict diagnosis
@@ -286,6 +291,7 @@ def predict(patientID):
 
     return jsonify(diagnosis)
     # return render_template("demo.html",diagnosis=diagnosis)
+
 
 if __name__ == "__main__":
     app.run()

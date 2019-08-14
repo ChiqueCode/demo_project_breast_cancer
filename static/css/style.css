@@ -104,6 +104,21 @@ h6 {
     color: hsl(337, 53%, 20%);
 }
 
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+}
+
 .subheader {
     font-family: "Oswald", sans-serif;
     color: hsla(337, 53%, 20%, 55%);
@@ -223,6 +238,7 @@ screen and (max-width: 39.9375em) {
 .pull-container,
 .stats-container,
 .demo-container,
+.graphical-visual,
 .who-are-we,
 .cta-03,
 footer {
@@ -238,6 +254,7 @@ screen and (max-width: 39.9375em) {
     .pull-container,
     .stats-container,
     .demo-container,
+    .graphical-visual,
     .who-are-we,
     .cta-03,
     footer {
@@ -363,37 +380,6 @@ screen and (min-width: 40em) {
     background: linear-gradient(hsla(337, 53%, 20%, 0.45), hsla(337, 53%, 20%, 0.45)), url("../images/email-pattern.png");
 }
 
-/*
- * Hide visually and from screen readers
- */
-
-.hidden {
-    display: none !important;
-}
-
-/* Footer */
-
-footer {
-    background-color: hsl(277, 88%, 10%);
-    background: linear-gradient(hsla(277, 88%, 10%, 0.45), hsla(277, 88%, 10%, 0.45)), url("../images/vertical_cloth_@2X.png");
-    color: hsl(277, 10%, 60%);
-}
-
-footer ul .no-bullet {
-    list-style-type: none;
-}
-
-/* link should look the same after visiting it */
-footer a,
-footer a:visited {
-    color: hsl(277, 10%, 60%);
-}
-
-footer a:hover,
-footer a:focus {
-    color: hsl(277, 40%, 40%);
-}
-
 /* Story Page */
 
 .our-story-who-we-are,
@@ -489,30 +475,64 @@ label {
     text-transform: uppercase;
 }
 
-/* Demo Page (aka /calculator)*/
+/* Demo Page */
+
+#diagnosis {
+    font-family: "Open Sans", sans-serif;
+}
+
+.demo-container svg {
+    margin-right: 5px;
+}
 
 .demo-container th {
     text-align: center;
 }
 
-.demo-container {
-    background-color: hsla(53, 80%, 79%, 0.45);
+.demo-container thead {
+    background: #854777;
+    color: #fff3f7;
 }
 
-.result {
+.demo-container tbody {
+    background: #fff3f7;
+}
+
+.demo-container label {
+    color: #3b0b58;
+
+}
+
+.demo-container tr:nth-child(even) {
+    background-color: hsla(16, 41%, 63%, 0.25);
+}
+
+.demo-container .measurements {
+    margin-top: 50px;
+}
+
+.demo-container .patient-selector {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.demo-container .result,
+.demo-container .patient-selector {
     padding: 40px;
-    background-color: #c78d78;
+    background-color: hsla(16, 41%, 63%, 0.25);
     color: #fff3f7;
+    border-radius: 10px;
 }
 
 .how-container {
     margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .how-it-works {
     padding: 3rem;
-    background: #854777;
+    background: linear-gradient(hsla(277, 78%, 19%, .95), hsla(277, 78%, 19%, .95)),
+        url("../images/positive.png");
     color: #fff3f7;
     border-radius: 10px;
 }
@@ -521,14 +541,70 @@ label {
     color: #fff3f7;
 }
 
+.demo-container,
+.graphical-visual {
+    padding-top: 200px;
+    padding-bottom: 200px;
+}
+
+/* Medium and Small breakpoints */
+@media screen and (min-width: 40em) and (max-width: 63.9375em),
+screen and (max-width: 39.9375em) {
+    .graphical-visual {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+
 .graphical-visual {
     background: linear-gradient(hsla(16, 41%, 63%, 0.25), hsla(16, 41%, 63%, 0.25)),
         url("../images/interlaced.png");
-    padding-top: 100px;
-    padding-bottom: 100px;
 }
 
 .graphical-visual svg {
     color: #c78d78;
     font-size: 6rem;
+}
+
+/* Medium and Small breakpoints */
+@media screen and (min-width: 40em) and (max-width: 63.9375em),
+screen and (max-width: 39.9375em) {
+    .graphical-visual svg {
+        font-size: 4rem;
+    }
+}
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none !important;
+}
+
+/* Footer */
+
+footer {
+    background-color: hsl(277, 88%, 10%);
+    background: linear-gradient(hsla(277, 88%, 10%, 0.45), hsla(277, 88%, 10%, 0.45)), url("../images/vertical_cloth_@2X.png");
+    color: hsl(277, 10%, 60%);
+}
+
+footer .subheader {
+    color: #c78d78;
+}
+
+footer ul .no-bullet {
+    list-style-type: none;
+}
+
+/* link should look the same after visiting it */
+footer a,
+footer a:visited {
+    color: hsl(277, 10%, 60%);
+}
+
+footer a:hover,
+footer a:focus {
+    color: hsl(277, 40%, 40%);
 }

@@ -1,6 +1,11 @@
+// Referencing to DOM objects to be changed later
+var table = d3.select("#uwds tbody");
+var tableCytology = d3.select("#cds tbody");
+var resultDisplay = d3.select("#diagnosis");
+
 function createDropdown() {
   /**
-    /* Creates dropdown menu of patient ID's
+    * Creates dropdown menu of patient ID's
     */
 
   // Create list of patient ID's
@@ -12,7 +17,8 @@ function createDropdown() {
   // Add first dropdown item
   d3.select("#selPatient")
     .append("option")
-    .text("");
+    .property("disabled", true)
+    .text("-- Choose Patient ID --");
 
   // Create dropdown menu of patientID's to populate the select options
   patientList.forEach(patientID => {
@@ -26,31 +32,25 @@ function createDropdown() {
 function submitdropdownvalue(newvalue) {
   d3.select("#analyze").property("value", newvalue);
 }
-// Saving the table and results as variables
-var table = d3.select("#uwds");
-var tableCytology = d3.select("#cds");
-var resultDisplay = d3.select("#diagnosis");
 
-// Clear values for existing feature table and diagnosis
-table.html("");
-tableCytology.html("");
-resultDisplay.html("&nbsp;");
+
 
 function selectPatient(patientID) {
   /**
-    * Populates form with features from selected patient
-    * @param {string}    patientID    ID of selected patient 
-    * patient in feature array
-    */
+   * Populates form with features from selected patient
+   * @param {string}    patientID    ID of selected patient 
+   * patient in feature array
+   */
 
+  // Clear values for existing feature table and diagnosis
+  table.html("");
+  tableCytology.html("");
+  resultDisplay.html("&nbsp;");
 
   // url for wisconsin analysis
   var featuresURL = `/features/${patientID}`;
-  var analysisURL = `/analyze/${patientID}`;
-
   // url for cytology analysis
   var modelURL = `/model/${patientID}`;
-  var predictURL = `/predict/${patientID}`;
 
   // Fetch dictionary of the name of the features and corresponding values for wisconsin ds
   d3.json(featuresURL).then(function(patientFeatures) {
@@ -87,7 +87,6 @@ const printResult = async patientID => {
     await fetchMLdata(`/analyze/${patientID}`),
     await fetchMLdata(`/predict/${patientID}`)
   ]);
-  console.log(data); // Save results in the objects
 
   uwResult = data[0];
   cResult = data[1]; 
@@ -97,14 +96,11 @@ const printResult = async patientID => {
 
   // if statement to return the diagnosis
   if (uwResult === "Malignant" || cResult === "Malignant") {
-    // console.log("Malignant");
     final = "Malignant";
   } else {
-    // console.log("Benigh");
     final = "Benign";
   }
 
-  // console.log(final);
   resultDisplay.html(final);
 };
 

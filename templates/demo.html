@@ -65,16 +65,16 @@
   <div class="how-container">
     <div class="grid-container">
       <div class="grid-x grid-margin-x grid-margin-y">
-        <div class="cell large-6 medium-6">
+        <div class="cell large-7 medium-7">
           <h1>Service Demo</h1>
-          <h4 class="subheader">This is an integrated platform that streamlines the patient mammogram's results and
-            provides the diagnosis.
+          <h4 class="subheader">An integrated platform that streamlines the patient mammogram's results and provides
+            real-time diagnosis
           </h4>
           <p>Measurements are passed through two machine learning Random Forest algorithms. University of Wisconsin and
             Cytology datasets are used.</p>
         </div>
-        <div class="cell large-6 medium-6 how-it-works">
-          <h2>How it works</h2>
+        <div class="cell large-5 medium-5 how-it-works">
+          <h2 class="subheader">How it works</h2>
           <ol>
             <li>Connect to hospital database</li>
             <li>Select patient</li>
@@ -91,34 +91,34 @@
   <div class="graphical-visual">
     <div class="grid-container">
       <div class="grid-x grid-margin-x grid-margin-y align-middle align-center text-center">
-        <div class="cell large-2">
+        <div class="cell large-2 medium-2">
           <i class="fad fa-database"></i>
         </div>
-        <div class="cell large-1 show-for-large">
+        <div class="cell large-1 medium-1 show-for-medium">
           <i class="fas fa-arrow-right"></i>
         </div>
-        <div class="cell large-1 hide-for-large">
+        <div class="cell large-1 medium-1 hide-for-medium">
           <i class="fas fa-arrow-down"></i>
         </div>
-        <div class="cell large-2">
+        <div class="cell large-2 medium-2">
           <i class="fad fa-hospital-user"></i>
         </div>
-        <div class="cell large-1 show-for-large">
+        <div class="cell large-1 medium-1 show-for-medium">
           <i class="fas fa-arrow-right"></i>
         </div>
-        <div class="cell large-1 hide-for-large">
+        <div class="cell large-1 medium-1 hide-for-medium">
           <i class="fas fa-arrow-down"></i>
         </div>
-        <div class="cell large-2">
+        <div class="cell large-2 medium-2">
           <i class="fad fa-diagnoses"></i>
         </div>
-        <div class="cell large-1 show-for-large">
+        <div class="cell large-1 medium-1 show-for-medium">
           <i class="fas fa-arrow-right"></i>
         </div>
-        <div class="cell large-1 hide-for-large">
+        <div class="cell large-1 medium-1 hide-for-medium">
           <i class="fas fa-arrow-down"></i>
         </div>
-        <div class="cell large-2">
+        <div class="cell large-2 medium-2">
           <i class="fad fa-poll-people"></i>
         </div>
       </div>
@@ -129,55 +129,72 @@
 
   <div class="demo-container">
     <div class="grid-container">
-      <div class="grid-x align-middle grid-margin-x" id="app">
-        <div class="cell large-6 text-center">
-          <h3>Select Patient ID</h3>
-          <form>
-            <select id="selPatient" onchange="selectPatient(this.value)"></select>
-            <!-- Unique table id to populate the features in the table -->
-            <table id="uwds">
-              <thead>
-                <tr>
-                  <th>Measurement</th>
-                  <th>Value</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+      <div class="grid-x align-middle align-center grid-margin-x">
+        <div class="cell large-6 medium-8">
+          <h3>Demo Hospital</h3>
+          <h4 class="subheader"><i class="fad fa-shield-check"></i> Database Connected</h4>
+          <form class="patient-selector">
+            <label for="selPatient"><i class="fad fa-hospital-user"></i> Select Patient ID</label>
+            <select id="selPatient" onchange="selectPatient(this.value)">
+              <!-- Options dynamically populated here -->
+            </select>
           </form>
         </div>
-        <div class="cell large-6">
+      </div>
+      <div class="grid-x align-middle align-center grid-margin-x">
+        <div class="cell large-6 medium-8">
           <div class="result text-center">
-            <h3>Diagnosis</h3>
-            <h3 id="diagnosis">
-              <!-- Where the diagnosis is displayed -->
-            </h3>
+            <h3 class="subheader">Diagnosis</h3>
+            <h2 id="diagnosis">
+              <i class="fad fa-diagnoses fa-2x"></i>
+            </h2>
           </div>
+        </div>
+      </div>
+      <div class="grid-x align-center grid-margin-x measurements">
+        <div class="cell large-4 medium-6">
+          <!-- Unique table id to populate the features in the table -->
+          <h3 class="subheader">Cytology</h3>
+          <table id="cds">
+            <thead>
+              <tr>
+                <th>Measurement</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2">Measurements of selected patient ID above will display here</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="cell large-4 medium-6">
+          <!-- Unique table id to populate the features in the table -->
+          <h3 class="subheader">University of Wisconsin</h3>
+          <table id="uwds">
+            <thead>
+              <tr>
+                <th>Measurement</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="2">Measurements of selected patient ID above will display here</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 
   <div class="demo-container-02">
-      <div class="grid-container">
-        <div class="grid-x align-middle grid-margin-x">
-          <div class="cell large-6 text-center">
-            <!-- Unique table id to populate the features in the table -->
-              <table id="cds">
-                <thead>
-                  <tr>
-                    <th>Measurement</th>
-                    <th>Value</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-              </table>
-          </div>
-        </div>
-      </div>
+    <div class="grid-container">
+
     </div>
+  </div>
 
   <!-- Statistics -->
 
@@ -285,7 +302,7 @@
       </a>
     </div>
     <div class="cell large-12 text-center">
-      <h3 class="warm-sun-set">Site Created with ❤️ by:</h3>
+      <h3 class="subheader">Site Created with ❤️ by</h3>
       <ul class="no-bullet">
         <li><a href="https://chique.dev/">Kseniya Bogoslavskaya</a></li>
         <li><a href="https://github.com/gretelup">Gretel Uptegrove</a></li>
