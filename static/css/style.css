@@ -69,6 +69,17 @@ a.button:focus {
     background-color: transparent;
 }
 
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    .top-bar {
+        text-align: center;
+    }
+
+    .top-bar .menu-text {
+        width: 100%;
+    }
+}
+
 .top-bar .svg-inline--fa,
 .button .svg-inline--fa {
     margin-right: 5px;
@@ -168,6 +179,23 @@ h6 {
     font-size: 8rem;
     font-weight: 700;
     letter-spacing: -0.25rem;
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+    .cta-container .subheader {
+        font-size: 7rem;
+        line-height: 6.5rem;
+    }
+}
+
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {
+    .cta-container .subheader {
+        font-size: 5rem;
+        line-height: 4.5rem;
+    }
 }
 
 .cta-container ul {
