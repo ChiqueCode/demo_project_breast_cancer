@@ -20,6 +20,8 @@ NOTE: Both of the datasets that we used were extremely small. (Wisconsin:  We ha
 * Sonya Bogoslavskaya
 * Gretel Uptegrove
 
+Thanks to Mike Lygas / Dr Theodore Lygas MD, FACS for helping understand medical side of the project.
+
 ## Languages and Libraries Used
 
 ```
