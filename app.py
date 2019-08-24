@@ -93,14 +93,7 @@ def trend_func():
 @app.route("/")
 def index():
     return render_template("index.html")
-
-
-# Map route
-@app.route("/map")
-def map_func():
-    return render_template("map.html")
-    app.add_url_rule('/', 'map_func', map_func)
-
+    
 
 # Vizualisations route
 @app.route("/story")
