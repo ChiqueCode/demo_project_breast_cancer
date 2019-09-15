@@ -16,20 +16,12 @@ L.tileLayer(
   }
 ).addTo(myMap);
 
-// Define the var magColor and assign an empty string for it so we can identify the color with the of statement
+// Turning off Zoom on the map
+myMap.scrollWheelZoom.disable();
+myMap.on('focus', () => { myMap.scrollWheelZoom.enable(); });
+myMap.on('blur', () => { myMap.scrollWheelZoom.disable(); });
 
-//Load the arrays with markers
-// function getColor(cancer_deaths)
-//      {
-//          switch(parseInt(cancer_deaths)){
-//              case 0: return '#efa9ee';
-//              case 1: return '#ef64f0';
-//              case 2: return '#8e138f';
-//              case 3: return '#55055b';
-//              default: return '#55055b';
-//          }
-//      }
-
+// Grab the data
 var url = "/percentage";
 
 d3.json(url, { crossOrigin: "anonymous" }).then(function(response) {
