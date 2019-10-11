@@ -4,9 +4,7 @@ var tableCytology = d3.select("#cds tbody");
 var resultDisplay = d3.select("#diagnosis");
 
 function createDropdown() {
-  /**
-    * Creates dropdown menu of patient ID's
-    */
+// Creates dropdown menu of patient ID's
 
   // Create list of patient ID's
   var patientList = [];
@@ -32,8 +30,6 @@ function createDropdown() {
 function submitdropdownvalue(newvalue) {
   d3.select("#analyze").property("value", newvalue);
 }
-
-
 
 function selectPatient(patientID) {
   /**

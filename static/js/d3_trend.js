@@ -20,7 +20,6 @@ var chartGroup = svg
   .append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-
 var url = '/trend';
 
 d3.json(url, { crossOrigin: "anonymous" }).then(function(dataCancer) {

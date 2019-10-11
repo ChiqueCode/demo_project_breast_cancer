@@ -40,9 +40,6 @@ Model = Base.classes.model_table
 # Deaths/incidents percentage by state route
 @app.route("/percentage")
 def percentage_func():
-    # stmt = datasets.session.query(usa_table).statement
-    # df = pd.read_sql_query(stmt, datasets.session.bind)
-    # return jsonify(list(df))
 
  # TODO: Change "sel" to select all
 
@@ -62,7 +59,7 @@ def percentage_func():
     percentage_results = db.session.query(*sel).all()
 
     # Creating Pandas DataFrame
-    percentage_df = pd.DataFrame(percentage_results, columns=[
+    percentage_df = pd.DataFrame(percentage_results, columns = [
                                  "state", "abr", "lat", "lng", "incidence", "population", "percentage_incidence", "death_count", "percentage_deaths"])
 
     # Return results in JSON format
@@ -83,11 +80,11 @@ def trend_func():
     # percentage_results = db.session.query.all()
 
     # Creating Pandas DataFrame
-    trend_df = pd.DataFrame(trend_results, columns=[
+    trend_df = pd.DataFrame(trend_results, columns = [
                             "year", "incidents", "deaths"])
 
     # Return results in JSON format
-    return jsonify(trend_df.to_dict(orient="records"))
+    return jsonify(trend_df.to_dict(orient = "records"))
 
 # Home route
 @app.route("/")
@@ -101,10 +98,10 @@ def story():
     return render_template("story.html")
 
 
-# Case studies route
-@app.route("/cases")
-def cases():
-    return render_template("cases.html")
+# # Case studies route
+# @app.route("/cases")
+# def cases():
+#     return render_template("cases.html")
 
 
 # Demo route
@@ -208,7 +205,7 @@ def model(patientID):
     row_model = int(patientID) - 19000
 
     # Assign features and labels
-    X = model_df.drop(columns=["diagnosis"])
+    X = model_df.drop(columns = ["diagnosis"])
     y = model_df["diagnosis"]
 
     # convert X to list of lists
@@ -259,7 +256,7 @@ def predict(patientID):
                            "Chromatin", "Nucleoli", "Mitosis"]
 
     # Assign features and labels
-    X = model_df.drop(columns=["diagnosis"])
+    X = model_df.drop(columns = ["diagnosis"])
     y = model_df["diagnosis"]
 
     # convert X to list of lists - this is my X
